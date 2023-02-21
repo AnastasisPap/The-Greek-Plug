@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { checkUserSession } from './redux/User/user.actions';
@@ -29,6 +29,7 @@ import Cart from './pages/Cart';
 import Payment from './pages/Payment';
 import Order from './pages/Order';
 import './default.scss';
+import PokemonList from './test';
 
 const App = props => {
   const dispatch = useDispatch();
@@ -40,78 +41,79 @@ const App = props => {
 
   return (
     <div className="App">
-      <AdminToolbar />
+      {/* <AdminToolbar /> */}
+
       <Routes>
-        <Route exact path="/" render={() => (
+        <Route exact path="/" element={
           <HomepageLayout>
             <Homepage />
           </HomepageLayout>
-        )}
+        }
         />
-        <Route exact path="/search" render={() => (
+        <Route exact path="/search" element={
           <MainLayout>
             <Search />
           </MainLayout>
-        )} />
-        <Route path="/search/:filterType" render={() => (
+        } />
+        <Route path="/search/:filterType" element={
           <MainLayout>
             <Search />
           </MainLayout>
-        )} />
-        <Route path="/product/:productID" render={() => (
+        } />
+        <Route path="/product/:productID" element={
           <MainLayout>
             <ProductDetails />
           </MainLayout>
-        )} />
-        <Route path="/cart" render={() => (
+        } />
+        <Route path="/cart" element={
           <MainLayout>
             <Cart />
           </MainLayout>
-        )} />
-        <Route path="/payment" render={() => (
+        } />
+        <Route path="/payment" element={
           <WithAuth>
             <MainLayout>
               <Payment />
             </MainLayout>
           </WithAuth>
-        )} />
-        <Route path="/registration" render={() => (
+        } />
+        <Route path="/registration" element={
           <MainLayout>
             <Registration />
           </MainLayout>
-        )} />
+        } />
         <Route path="/login"
-          render={() => (
+          element={
             <MainLayout>
               <Login />
             </MainLayout>
-          )} />
-        <Route path="/recovery" render={() => (
+          } />
+        <Route path="/recovery" element={
           <MainLayout>
             <Recovery />
           </MainLayout>
-        )} />
-        <Route path="/dashboard" render={() => (
+        } />
+        <Route path="/dashboard" element={
           <WithAuth>
             <DashboardLayout>
               <Dashboard />
             </DashboardLayout>
           </WithAuth>
-        )} />
-        <Route path="/order/:orderID" render={() => (
+        } />
+        <Route path="/order/:orderID" element={
           <WithAuth>
             <DashboardLayout>
               <Order />
             </DashboardLayout>
           </WithAuth>
-        )} />
-        <Route path="/admin" render={() => (
+        } />
+        <Route path="/admin" element={
           <WithAdminAuth>
             <AdminLayout>
               <Admin />
             </AdminLayout>
           </WithAdminAuth>
-        )} />
+        } />
       </Routes>
     </div>
   );
