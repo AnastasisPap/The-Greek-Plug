@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { fetchProductsStart } from './../../redux/Products/products.actions';
 import Product from './Product';
 import FormSelect from './../forms/FormSelect';
@@ -13,7 +13,7 @@ const mapState = ({ productsData }) => ({
 
 const ProductResults = ({ }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const { filterType } = useParams();
   const { products } = useSelector(mapState);
 
@@ -27,7 +27,7 @@ const ProductResults = ({ }) => {
 
   const handleFilter = (e) => {
     const nextFilter = e.target.value;
-    history.push(`/search/${nextFilter}`);
+    navigate(`/search/${nextFilter}`);
   };
 
   if (!Array.isArray(data)) return null;

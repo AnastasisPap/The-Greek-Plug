@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { checkUserSession } from './redux/User/user.actions';
 
 // components
@@ -41,7 +41,7 @@ const App = props => {
   return (
     <div className="App">
       <AdminToolbar />
-      <Switch>
+      <Routes>
         <Route exact path="/" render={() => (
           <HomepageLayout>
             <Homepage />
@@ -112,7 +112,7 @@ const App = props => {
             </AdminLayout>
           </WithAdminAuth>
         )} />
-      </Switch>
+      </Routes>
     </div>
   );
 }

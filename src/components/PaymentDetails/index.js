@@ -8,7 +8,7 @@ import { selectCartTotal, selectCartItemsCount, selectCartItems } from '../../re
 import { saveOrderHistory } from '../../redux/Orders/orders.actions';
 import { createStructuredSelector } from 'reselect';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './styles.scss';
 import axios from 'axios';
 
@@ -30,7 +30,7 @@ const mapState = createStructuredSelector({
 const PaymentDetails = () => {
   const stripe = useStripe();
   const elements = useElements();
-  const history = useHistory();
+  const navigate = useNavigate();
   const { total, itemCount, cartItems } = useSelector(mapState);
   const dispatch = useDispatch();
   const [billingAddress, setBillingAddress] = useState({ ...initialAddressState });
@@ -45,7 +45,7 @@ const PaymentDetails = () => {
 
   useEffect(() => {
     if (itemCount < 1) {
-      history.push('/dashboard');
+      navigate('/dashboard');
     }
 
   }, [itemCount]);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { signUpUserStart } from './../../redux/User/user.actions';
 import './styles.scss';
 
@@ -15,7 +15,7 @@ const mapState = ({ user }) => ({
 
 const Signup = props => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const { currentUser, userErr } = useSelector(mapState);
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
@@ -26,7 +26,7 @@ const Signup = props => {
   useEffect(() => {
     if (currentUser) {
       reset();
-      history.push('/');
+      navigate('/');
     }
 
   }, [currentUser]);

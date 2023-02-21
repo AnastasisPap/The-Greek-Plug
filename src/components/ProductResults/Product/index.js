@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from './../../forms/Button';
 import { useDispatch } from 'react-redux';
 import { addProduct } from './../../../redux/Cart/cart.actions';
 
 const Product = (product) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const {
     documentID,
     productThumbnail,
@@ -25,7 +25,7 @@ const Product = (product) => {
     dispatch(
       addProduct(product)
     );
-    history.push('/cart');
+    navigate('/cart');
   };
 
   return (

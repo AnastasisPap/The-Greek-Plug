@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectCartItems, selectCartTotal } from './../../redux/Cart/cart.selectors';
 import { createStructuredSelector } from 'reselect';
@@ -13,7 +13,7 @@ const mapState = createStructuredSelector({
 });
 
 const Checkout = ({ }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { cartItems, total } = useSelector(mapState);
 
   const errMsg = 'You have no items in your cart.';
@@ -95,12 +95,12 @@ const Checkout = ({ }) => {
                             <tbody>
                               <tr>
                                 <td>
-                                  <Button onClick={() => history.goBack()}>
+                                  <Button onClick={() => navigate(-1)}>
                                     Continue Shopping
                                   </Button>
                                 </td>
                                 <td>
-                                  <Button onClick={() => history.push('/payment')}>
+                                  <Button onClick={() => navigate('/payment')}>
                                     Checkout
                                   </Button>
                                 </td>
