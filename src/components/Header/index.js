@@ -29,7 +29,7 @@ const Header = props => {
       <div className="wrap">
         <div className="logo">
           <Link to="/">
-            <span className="logo-text">The Greek Plug</span>
+            <span className="logo-text">Dispovapes</span>
           </Link>
         </div>
 
@@ -55,7 +55,7 @@ const Header = props => {
             <li>
               <Link to="/cart">
                 Your Cart ({totalNumCartItems})
-                <i class="fas fa-shopping-basket"></i>
+                <i className="fas fa-shopping-basket"></i>
               </Link>
             </li>
 
@@ -63,28 +63,14 @@ const Header = props => {
               <li key={1}>
                 <Link to="/dashboard">
                   My Account
-                  <i class="fas fa-user-circle"></i>
+                  <i className="fas fa-user-circle"></i>
                 </Link>
               </li>,
               <li key={2}>
                 <span onClick={() => signOut()}>
                   LogOut
-                  <i class="fas fa-sign-out-alt"></i>
+                  <i className="fas fa-sign-out-alt"></i>
                 </span>
-              </li>
-            ]}
-
-            {!currentUser && [
-              <li key={1} className="hideOnMobile">
-                <Link to="/registration">
-                  Register
-                </Link>
-              </li>,
-              <li key={2}>
-                <Link to="/login">
-                  Login
-                  <i class="fas fa-user-circle"></i>
-                </Link>
               </li>
             ]}
 
@@ -95,10 +81,6 @@ const Header = props => {
             </li>
 
           </ul>
-
-
-
-
 
         </div>
       </div>

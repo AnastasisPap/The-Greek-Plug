@@ -9,6 +9,7 @@ import { setUserOrderHistory, setOrderDetails } from './orders.actions';
 export function* getUserOrderHistory({ payload }) {
   try {
     const history = yield handleGetUserOrderHistory(payload);
+    console.log(history);
     yield put(
       setUserOrderHistory(history)
     );

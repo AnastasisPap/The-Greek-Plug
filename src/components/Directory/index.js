@@ -9,21 +9,21 @@ const Directory = props => {
         <div
           className="item"
           style={{
-            backgroundImage: `url(${"https://i.ibb.co/jMB005J/shoes.jpg"})`
+            backgroundImage: `url(${"https://i.ibb.co/54GhjdC/ww.webp"})`
           }}
         >
           <Link to="/search/shoes">
-            Shop shoes
+            Walter White
           </Link>
         </div>
         <div
           className="item"
           style={{
-            backgroundImage: `url(${"https://i.ibb.co/S7h29y6/sup.jpg"})`
+            backgroundImage: `url(${"https://i.ibb.co/54GhjdC/ww.webp"})`
           }}
         >
           <Link to="/search/clothing">
-            Shop clothing
+            Walter White
           </Link>
         </div>
       </div>

@@ -8,6 +8,6 @@ export const checkUserIsAdmin = currentUser => {
 }
 
 export const apiInstance = axios.create({
-    baseURL: 'https://us-central1-the-greek-plug-c0f5c.cloudfunctions.net/api'
+    baseURL: 'baseurl/api'
 });
 

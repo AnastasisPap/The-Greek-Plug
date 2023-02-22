@@ -1,4 +1,5 @@
 import { firestore } from './../../firebase/utils';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 export const handleSaveOrder = order => {
   return new Promise((resolve, reject) => {
@@ -16,12 +17,12 @@ export const handleSaveOrder = order => {
 };
 
 export const handleGetUserOrderHistory = uid => {
+  console.log('TEST')
   return new Promise((resolve, reject) => {
-    let ref = firestore.collection('orders').orderBy('orderCreatedDate');
-    ref = ref.where('orderUserID', '==', uid);
+    let ref = collection('orders').orderBy('dateOrdered');
+    const q = query(ref, where('userID', '==', uid));
 
-    ref
-      .get()
+    getDocs(q)
       .then(snap => {
         const data = [
           ...snap.docs.map(doc => {
@@ -31,14 +32,11 @@ export const handleGetUserOrderHistory = uid => {
             }
           })
         ];
-
         resolve({ data });
       })
       .catch(err => {
         reject(err);
       });
-
-
   });
 };
 

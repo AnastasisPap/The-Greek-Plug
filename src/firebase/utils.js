@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, collection} from 'firebase/firestore';
 import { GoogleAuthProvider } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -24,28 +24,10 @@ export const handleUserProfile = async ({ userAuth, additionalData }) => {
   if (!userAuth) return;
   const { uid } = userAuth;
 
-  const userRef = firestore.doc(`users/${uid}`);
-  const snapshot = await userRef.get();
+  const userRef = doc(firestore, "users", uid);
+  const docSnap = await getDoc(userRef);
 
-  if (!snapshot.exists) {
-    const { displayName, email } = userAuth;
-    const timestamp = new Date();
-    const userRoles = ['user'];
-
-    try {
-      await userRef.set({
-        displayName,
-        email,
-        createdDate: timestamp,
-        userRoles,
-        ...additionalData
-      });
-    } catch(err) {
-      console.log(err);
-    }
-  }
-
-  return userRef;
+  return docSnap;
 };
 
 export const getCurrentUser = () => {

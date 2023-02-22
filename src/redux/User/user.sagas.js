@@ -2,12 +2,12 @@ import { takeLatest, call, all, put } from 'redux-saga/effects';
 import { auth, handleUserProfile, getCurrentUser, GoogleProvider } from './../../firebase/utils';
 import userTypes from './user.types';
 import { signInSuccess, signOutUserSuccess, resetPasswordSuccess, userError } from './user.actions';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { handleResetPasswordAPI } from './user.helpers';
 
 export function* getSnapshotFromUserAuth(user, additionalData = {}) {
   try {
-    const userRef = yield call(handleUserProfile, { userAuth: user, additionalData });
-    const snapshot = yield userRef.get();
+    const snapshot = yield call(handleUserProfile, { userAuth: user, additionalData });
     yield put(
       signInSuccess({
         id: snapshot.id,
@@ -22,7 +22,7 @@ export function* getSnapshotFromUserAuth(user, additionalData = {}) {
 
 export function* emailSignIn({ payload: { email, password } }) {
   try {
-    const { user } = yield auth.signInWithEmailAndPassword(email, password);
+    const { user } = yield signInWithEmailAndPassword(auth, email, password);
     yield getSnapshotFromUserAuth(user);
 
   } catch (err) {

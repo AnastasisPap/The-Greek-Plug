@@ -25,7 +25,6 @@ const Dashboard = props => {
       <h1>
         Order History
       </h1>
-
       <OrderHistory orders={orderHistory} />
     </div>
   );

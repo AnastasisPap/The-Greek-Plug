@@ -19,7 +19,6 @@ import DashboardLayout from './layouts/DashboardLayout';
 // pages
 import Homepage from './pages/Homepage';
 import Search from './pages/Search';
-import Registration from './pages/Registration';
 import Login from './pages/Login';
 import Recovery from './pages/Recovery';
 import Dashboard from './pages/Dashboard';
@@ -29,7 +28,6 @@ import Cart from './pages/Cart';
 import Payment from './pages/Payment';
 import Order from './pages/Order';
 import './default.scss';
-import PokemonList from './test';
 
 const App = props => {
   const dispatch = useDispatch();
@@ -41,7 +39,7 @@ const App = props => {
 
   return (
     <div className="App">
-      {/* <AdminToolbar /> */}
+      <AdminToolbar />
 
       <Routes>
         <Route exact path="/" element={
@@ -77,22 +75,12 @@ const App = props => {
             </MainLayout>
           </WithAuth>
         } />
-        <Route path="/registration" element={
-          <MainLayout>
-            <Registration />
-          </MainLayout>
-        } />
         <Route path="/login"
           element={
             <MainLayout>
               <Login />
             </MainLayout>
           } />
-        <Route path="/recovery" element={
-          <MainLayout>
-            <Recovery />
-          </MainLayout>
-        } />
         <Route path="/dashboard" element={
           <WithAuth>
             <DashboardLayout>

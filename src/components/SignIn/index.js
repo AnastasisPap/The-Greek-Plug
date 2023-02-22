@@ -38,10 +38,6 @@ const SignIn = props => {
     dispatch(emailSignInStart({ email, password }));
   }
 
-  const handleGoogleSignIn = () => {
-    dispatch(googleSignInStart());
-  }
-
   const configAuthWrapper = {
     headline: 'LogIn'
   };
@@ -70,24 +66,6 @@ const SignIn = props => {
           <Button type="submit">
             LogIn
           </Button>
-
-          <div className="socialSignin">
-            <div className="row">
-              <Button onClick={handleGoogleSignIn}>
-                Sign in with Google
-              </Button>
-            </div>
-          </div>
-
-          <div className="links">
-            <Link to="/registration">
-              Register
-            </Link>
-            {` | `}
-            <Link to="/recovery">
-              Reset Password
-            </Link>
-          </div>
 
         </form>
       </div>
