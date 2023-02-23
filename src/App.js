@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
+import './default.scss';
 import { checkUserSession } from './redux/User/user.actions';
 
 // components
@@ -27,14 +28,13 @@ import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/Cart';
 import Payment from './pages/Payment';
 import Order from './pages/Order';
-import './default.scss';
+
 
 const App = props => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(checkUserSession());
-
   }, []);
 
   return (
@@ -48,6 +48,7 @@ const App = props => {
           </HomepageLayout>
         }
         />
+      {/*
         <Route exact path="/search" element={
           <MainLayout>
             <Search />
@@ -102,6 +103,7 @@ const App = props => {
             </AdminLayout>
           </WithAdminAuth>
         } />
+      */}
       </Routes>
     </div>
   );
